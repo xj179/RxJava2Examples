@@ -1,5 +1,6 @@
 package com.nanchen.rxjava2examples.util;
 
+import com.nanchen.rxjava2examples.model.ArticleList;
 import com.nanchen.rxjava2examples.model.FoodList;
 
 /**
@@ -13,6 +14,8 @@ import com.nanchen.rxjava2examples.model.FoodList;
 public class CacheManager {
     private static CacheManager instance;
     private FoodList footListJson;
+
+    private ArticleList articleList ;
 
     private CacheManager(){}
 
@@ -29,5 +32,13 @@ public class CacheManager {
 
     public void setFoodListData(FoodList data){
         this.footListJson = data;
+    }
+
+    public ArticleList getArticleList() {
+        return articleList;
+    }
+
+    public void setArticleList(ArticleList articleList) {
+        this.articleList = articleList;
     }
 }

@@ -2,14 +2,20 @@ package com.nanchen.rxjava2examples.module.rxjava2.operators.item;
 
 import android.util.Log;
 
+import androidx.annotation.MainThread;
+
 import com.nanchen.rxjava2examples.R;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * create
@@ -24,6 +30,8 @@ import io.reactivex.disposables.Disposable;
 public class RxCreateActivity extends RxOperatorBaseActivity {
     private static final String TAG = "RxCreateActivity";
 
+    Disposable disposable;
+
     @Override
     protected String getSubTitle() {
         return getString(R.string.rx_create);
@@ -31,6 +39,23 @@ public class RxCreateActivity extends RxOperatorBaseActivity {
 
     @Override
     protected void doSomething() {
+       /* disposable = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                Log.i(TAG, "subscribe current thead name: " + Thread.currentThread().getName());
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+            }
+        }).take(4).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(@NonNull Integer integer) throws Exception {
+                Log.i(TAG, "accept current thead name: " + Thread.currentThread().getName());
+                Log.i(TAG, "accept integer: " + integer);
+                mRxOperatorsText.append("accept current thead name: " + Thread.currentThread().getName()+ "\n");
+            }
+        });*/
+
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
@@ -84,5 +109,13 @@ public class RxCreateActivity extends RxOperatorBaseActivity {
                 Log.e(TAG, "onComplete" + "\n" );
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 }

@@ -48,7 +48,7 @@ public class RxCaseFlatMapActivity extends RxOperatorBaseActivity {
                 .addQueryParameter("rows", 1 + "")
                 .build()
                 .getObjectObservable(FoodList.class) // 发起获取食品列表的请求，并解析到FootList
-                .subscribeOn(Schedulers.io())        // 在io线程进行网络请求
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()) // 在主线程处理获取食品列表的请求结果
                 .doOnNext(new Consumer<FoodList>() {
                     @Override

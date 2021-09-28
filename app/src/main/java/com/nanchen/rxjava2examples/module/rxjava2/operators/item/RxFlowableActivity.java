@@ -30,7 +30,7 @@ public class RxFlowableActivity extends RxOperatorBaseActivity {
     @Override
     protected void doSomething() {
         Flowable.just(1,2,3,4)
-                .reduce(100, new BiFunction<Integer, Integer, Integer>() {
+                .scan(100, new BiFunction<Integer, Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer, @NonNull Integer integer2) throws Exception {
                         return integer+integer2;

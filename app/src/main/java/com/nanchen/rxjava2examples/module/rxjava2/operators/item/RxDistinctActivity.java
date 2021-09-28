@@ -5,6 +5,8 @@ import android.util.Log;
 import com.nanchen.rxjava2examples.R;
 
 import io.reactivex.Observable;
+import io.reactivex.SingleObserver;
+import io.reactivex.SingleSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 

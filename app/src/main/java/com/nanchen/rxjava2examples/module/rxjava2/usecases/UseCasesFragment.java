@@ -5,12 +5,18 @@ import android.content.Intent;
 import com.nanchen.rxjava2examples.model.OperatorModel;
 import com.nanchen.rxjava2examples.module.rxjava2.CategoryBaseFragment;
 import com.nanchen.rxjava2examples.module.rxjava2.Thread.RxThreadActivity;
+import com.nanchen.rxjava2examples.module.rxjava2.usecases.concat.RxCaseConcat2Activity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.concat.RxCaseConcatActivity;
+import com.nanchen.rxjava2examples.module.rxjava2.usecases.debounce.RxCaseDebounce2Activity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.debounce.RxCaseDebounceActivity;
+import com.nanchen.rxjava2examples.module.rxjava2.usecases.fastNetwork.RxNetwork2Activity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.fastNetwork.RxNetworkActivity;
+import com.nanchen.rxjava2examples.module.rxjava2.usecases.flatMap.RxCaseFlatMap2Activity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.flatMap.RxCaseFlatMapActivity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.interval.RxCaseIntervalActivity;
+import com.nanchen.rxjava2examples.module.rxjava2.usecases.okHttp.RxNetSingle2Activity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.okHttp.RxNetSingleActivity;
+import com.nanchen.rxjava2examples.module.rxjava2.usecases.zip.RxCaseZip2Activity;
 import com.nanchen.rxjava2examples.module.rxjava2.usecases.zip.RxCaseZipActivity;
 
 import java.util.ArrayList;
@@ -65,22 +71,28 @@ public class UseCasesFragment extends CategoryBaseFragment {
     protected void itemClick(int position) {
         switch (position) {
             case 0:
-                startActivity(new Intent(getActivity(), RxNetSingleActivity.class));
+//                startActivity(new Intent(getActivity(), RxNetSingleActivity.class));
+                startActivity(new Intent(getActivity(), RxNetSingle2Activity.class));
                 break;
             case 1:
-                startActivity(new Intent(getActivity(), RxNetworkActivity.class));
+//                startActivity(new Intent(getActivity(), RxNetworkActivity.class));
+                startActivity(new Intent(getActivity(), RxNetwork2Activity.class));
                 break;
             case 2:
-                startActivity(new Intent(getActivity(), RxCaseZipActivity.class));
+//                startActivity(new Intent(getActivity(), RxCaseZipActivity.class));
+                startActivity(new Intent(getActivity(), RxCaseZip2Activity.class));
                 break;
             case 3:
-                startActivity(new Intent(getActivity(), RxCaseFlatMapActivity.class));
+//                startActivity(new Intent(getActivity(), RxCaseFlatMapActivity.class));
+                startActivity(new Intent(getActivity(), RxCaseFlatMap2Activity.class));
                 break;
             case 4:
-                startActivity(new Intent(getActivity(), RxCaseConcatActivity.class));
+//                startActivity(new Intent(getActivity(), RxCaseConcatActivity.class));
+                startActivity(new Intent(getActivity(), RxCaseConcat2Activity.class));
                 break;
             case 5:
-                startActivity(new Intent(getActivity(), RxCaseDebounceActivity.class));
+//                startActivity(new Intent(getActivity(), RxCaseDebounceActivity.class));
+                startActivity(new Intent(getActivity(), RxCaseDebounce2Activity.class));
                 break;
             case 6:
                 startActivity(new Intent(getActivity(), RxCaseIntervalActivity.class));

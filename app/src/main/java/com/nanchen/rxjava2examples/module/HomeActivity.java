@@ -2,14 +2,18 @@ package com.nanchen.rxjava2examples.module;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.nanchen.rxjava2examples.R;
 import com.nanchen.rxjava2examples.base.BaseActivity;
 import com.nanchen.rxjava2examples.base.BaseViewPagerAdapter;
@@ -52,6 +56,7 @@ public class HomeActivity extends BaseActivity {
 //            layoutParams.height = ScreenUtil.dip2px(this,ScreenUtil.getStatusBarHeight(this));
             layoutParams.height = ScreenUtil.dip2px(this,80);
             mToolbarTitle.setLayoutParams(layoutParams);
+            Log.i("TAG", "initView: toolbar visible-->" +  (mToolbarTitle.getVisibility()== View.GONE));
         }
 
         initToolBar(mToolbar, false, "");

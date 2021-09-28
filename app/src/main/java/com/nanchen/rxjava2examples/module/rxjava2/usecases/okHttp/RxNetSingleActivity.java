@@ -10,6 +10,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.CheckReturnValue;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -44,6 +45,7 @@ public class RxNetSingleActivity extends RxOperatorBaseActivity {
         return "单一的网络请求";
     }
 
+    @CheckReturnValue
     @Override
     protected void doSomething() {
         Observable.create(new ObservableOnSubscribe<Response>() {

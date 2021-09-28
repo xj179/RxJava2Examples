@@ -1,5 +1,7 @@
 package com.nanchen.rxjava2examples.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Author: nanchen
  * Email: liushilin520@foxmail.com
@@ -12,6 +14,7 @@ public class MobileAddress {
      * error_code : 0
      * reason : Succes
      * result : {"mobilenumber":"1302167","mobilearea":"山东 青岛市","mobiletype":"联通如意通卡","areacode":"0532","postcode":"266000"}
+     * 聚合api：{"resultcode":"200","reason":"Return Successd!","result":{"province":"浙江","city":"杭州","areacode":"0571","zip":"310000","company":"移动","card":""},"error_code":0}
      */
 
     private int error_code;
@@ -53,6 +56,8 @@ public class MobileAddress {
 
     public static class ResultBean {
         /**
+         * 聚合api： {"province":"浙江","city":"杭州","areacode":"0571","zip":"310000","company":"移动","card":""}
+         *
          * mobilenumber : 1302167
          * mobilearea : 山东 青岛市
          * mobiletype : 联通如意通卡
@@ -62,9 +67,14 @@ public class MobileAddress {
 
         private String mobilenumber;
         private String mobilearea;
+        @SerializedName("company")
         private String mobiletype;
         private String areacode;
         private String postcode;
+
+//        聚合api
+        private String province;
+        private String city;
 
         public String getMobilenumber() {
             return mobilenumber;
@@ -75,7 +85,8 @@ public class MobileAddress {
         }
 
         public String getMobilearea() {
-            return mobilearea;
+//            return mobilearea;
+            return  province + city ;
         }
 
         public void setMobilearea(String mobilearea) {
@@ -106,6 +117,23 @@ public class MobileAddress {
             this.postcode = postcode;
         }
 
+
+        public String getProvince() {
+            return province;
+        }
+
+        public void setProvince(String province) {
+            this.province = province;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
         @Override
         public String toString() {
             return "ResultBean{" +
@@ -114,6 +142,8 @@ public class MobileAddress {
                     ", mobiletype='" + mobiletype + '\'' +
                     ", areacode='" + areacode + '\'' +
                     ", postcode='" + postcode + '\'' +
+                    ", province='" + province + '\'' +
+                    ", city='" + city + '\'' +
                     '}';
         }
     }
